@@ -1,0 +1,5423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="Sb6UfCbBXr10IVOuP9JIEkK6RQBWry8L1_C0t6Xhplo" />
+    <meta name="google-site-verification" content="4c9q1KauMptM-OXQq6rRvmOGRxS_X_aJ9pFnW50tQ4M" />
+<meta name="google-site-verification" content="53EvGkWklDLdr6ES2gQLqfBXbKkkdVufa0qQyjp4Np4" />
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+  name="description"
+  content="Waqar — Website Developer & Digital Creator"
+>
+
+<meta
+  name="theme-color"
+  content="#030303"
+>
+
+<title>WAQAR — WEBSITE DEVELOPER</title>
+
+
+<style>
+
+/* =========================================================
+   WAQAR PREMIUM SINGLE FILE WEBSITE
+   HTML + CSS + JAVASCRIPT
+   EVERYTHING IS INSIDE THIS INDEX.HTML
+   ========================================================= */
+
+
+/* =========================================================
+   01 — ROOT
+   ========================================================= */
+
+:root {
+
+  --bg: #030303;
+  --bg2: #070707;
+  --card: rgba(255,255,255,.045);
+
+  --white: #ffffff;
+  --text: #eeeeee;
+  --muted: #8d8d8d;
+  --muted2: #5e5e5e;
+
+  --line: rgba(255,255,255,.12);
+  --line2: rgba(255,255,255,.06);
+
+  --purple: #8b5cf6;
+  --blue: #22d3ee;
+  --pink: #ec4899;
+
+  --max: 1250px;
+
+}
+
+
+/* =========================================================
+   02 — RESET
+   ========================================================= */
+
+* {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+body {
+
+  margin: 0;
+  padding: 0;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow-x: hidden;
+
+}
+
+a {
+
+  color: inherit;
+
+  text-decoration: none;
+
+}
+
+button {
+
+  font-family: inherit;
+
+}
+
+img {
+
+  max-width: 100%;
+
+  display: block;
+
+}
+
+
+/* =========================================================
+   03 — BODY BACKGROUND
+   ========================================================= */
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -5;
+
+  background:
+
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(139,92,246,.14),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(34,211,238,.10),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255,255,255,.025),
+      transparent 40%
+    );
+
+}
+
+
+/* =========================================================
+   04 — NOISE
+   ========================================================= */
+
+.noise {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 90;
+
+  pointer-events: none;
+
+  opacity: .045;
+
+  background-image:
+
+    url(
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+    );
+
+}
+
+
+/* =========================================================
+   05 — LOADER
+   ========================================================= */
+
+#loader {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  background: #000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
+
+}
+
+.loader-logo {
+
+  font-size:
+    clamp(70px, 15vw, 190px);
+
+  font-weight: 1000;
+
+  letter-spacing: -.09em;
+
+  line-height: .8;
+
+  color: #fff;
+
+  animation:
+    loaderPulse 1.8s infinite;
+
+}
+
+.loader-sub {
+
+  margin-top: 30px;
+
+  font-size: 10px;
+
+  letter-spacing: .4em;
+
+  color: #666;
+
+}
+
+.loader-bar {
+
+  width: min(400px, 70vw);
+
+  height: 2px;
+
+  background: #1a1a1a;
+
+  margin-top: 25px;
+
+  overflow: hidden;
+
+}
+
+.loader-bar span {
+
+  display: block;
+
+  width: 0%;
+
+  height: 100%;
+
+  background: #fff;
+
+  animation:
+    loaderProgress 2.3s ease forwards;
+
+}
+
+
+/* =========================================================
+   06 — SCROLL PROGRESS
+   ========================================================= */
+
+.scroll-progress {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 0%;
+
+  height: 3px;
+
+  z-index: 999;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--purple),
+      var(--blue),
+      #fff
+    );
+
+}
+
+
+/* =========================================================
+   07 — CANVAS
+   ========================================================= */
+
+#spaceCanvas {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   08 — CUSTOM CURSOR
+   ========================================================= */
+
+.cursor-dot {
+
+  position: fixed;
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  pointer-events: none;
+
+  z-index: 10000;
+
+  transform:
+    translate(-50%, -50%);
+
+}
+
+.cursor-ring {
+
+  position: fixed;
+
+  width: 38px;
+
+  height: 38px;
+
+  border: 1px solid rgba(255,255,255,.55);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 9999;
+
+  transform:
+    translate(-50%, -50%);
+
+  transition:
+    width .25s ease,
+    height .25s ease,
+    border-color .25s ease;
+
+}
+
+.cursor-ring.active {
+
+  width: 85px;
+
+  height: 85px;
+
+  border-color: rgba(255,255,255,.8);
+
+}
+
+
+/* =========================================================
+   09 — NAVIGATION
+   ========================================================= */
+
+.nav {
+
+  position: fixed;
+
+  top: 18px;
+
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  width: min(1180px, 94%);
+
+  padding: 13px 16px;
+
+  border:
+    1px solid var(--line);
+
+  background:
+    rgba(5,5,5,.65);
+
+  backdrop-filter:
+    blur(25px);
+
+  -webkit-backdrop-filter:
+    blur(25px);
+
+  border-radius: 100px;
+
+  z-index: 500;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+}
+
+.brand {
+
+  font-size: 18px;
+
+  font-weight: 1000;
+
+  letter-spacing: -.05em;
+
+}
+
+.brand span {
+
+  color: var(--purple);
+
+}
+
+.nav-links {
+
+  display: flex;
+
+  gap: 25px;
+
+}
+
+.nav-links a {
+
+  color: #aaa;
+
+  font-size: 11px;
+
+  transition:
+    color .3s ease;
+
+}
+
+.nav-links a:hover {
+
+  color: #fff;
+
+}
+
+.nav-button {
+
+  border:
+    1px solid #444;
+
+  border-radius: 100px;
+
+  padding: 10px 16px;
+
+  font-size: 11px;
+
+}
+
+
+/* =========================================================
+   10 — HERO
+   ========================================================= */
+
+.hero {
+
+  min-height: 100svh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    120px 5% 80px;
+
+}
+
+.hero-grid {
+
+  position: absolute;
+
+  inset: -20%;
+
+  background:
+
+    linear-gradient(
+      rgba(255,255,255,.045) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.045) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  transform:
+    perspective(500px)
+    rotateX(65deg)
+    translateY(25%);
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 25%,
+      black 75%,
+      transparent
+    );
+
+}
+
+.hero-content {
+
+  width: min(1050px, 95%);
+
+  text-align: center;
+
+  position: relative;
+
+  z-index: 10;
+
+}
+
+.eyebrow {
+
+  color: #8a8a8a;
+
+  font-size: 10px;
+
+  letter-spacing: .25em;
+
+  margin-bottom: 25px;
+
+}
+
+.eyebrow::before {
+
+  content: "";
+
+  display: inline-block;
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  margin-right: 10px;
+
+  box-shadow:
+    0 0 20px #fff;
+
+  animation:
+    pulse 1.2s infinite;
+
+}
+
+.hero-title {
+
+  font-size:
+    clamp(90px, 20vw, 260px);
+
+  line-height: .72;
+
+  letter-spacing: -.11em;
+
+  font-weight: 1000;
+
+  position: relative;
+
+  display: inline-block;
+
+}
+
+.hero-title::after {
+
+  content: "WAQAR";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: transparent;
+
+  -webkit-text-stroke:
+    1px rgba(255,255,255,.18);
+
+  transform:
+    translate(12px,12px);
+
+  z-index: -1;
+
+}
+
+.hero-title sup {
+
+  font-size: .1em;
+
+  vertical-align: top;
+
+  letter-spacing: 0;
+
+}
+
+.hero-description {
+
+  max-width: 650px;
+
+  margin: 45px auto 0;
+
+  color: #888;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+}
+
+.hero-buttons {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 30px;
+
+  flex-wrap: wrap;
+
+}
+
+.btn {
+
+  padding:
+    15px 22px;
+
+  border-radius: 100px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+
+}
+
+.btn-primary {
+
+  background: #fff;
+
+  color: #000;
+
+}
+
+.btn-secondary {
+
+  border:
+    1px solid #444;
+
+  color: #fff;
+
+  background:
+    rgba(255,255,255,.02);
+
+}
+
+
+/* =========================================================
+   11 — HERO ORBITS
+   ========================================================= */
+
+.orbit {
+
+  position: absolute;
+
+  border:
+    1px solid rgba(255,255,255,.10);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+}
+
+.orbit::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 9px;
+
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow:
+    0 0 25px #fff;
+
+  left: 50%;
+
+  top: -5px;
+
+}
+
+.orbit-one {
+
+  width: 330px;
+
+  height: 330px;
+
+  animation:
+    orbitSpin 12s linear infinite;
+
+}
+
+.orbit-two {
+
+  width: 550px;
+
+  height: 550px;
+
+  animation:
+    orbitSpin 20s linear infinite reverse;
+
+}
+
+.orbit-three {
+
+  width: 780px;
+
+  height: 780px;
+
+  animation:
+    orbitSpin 30s linear infinite;
+
+}
+
+
+/* =========================================================
+   12 — INSTAGRAM NEURAL CORE
+   ========================================================= */
+
+.neural-core {
+
+  position: absolute;
+
+  right: 5%;
+
+  top: 26%;
+
+  width: 280px;
+
+  height: 280px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255,255,255,.15);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 20;
+
+  box-shadow:
+    0 0 100px rgba(139,92,246,.10);
+
+}
+
+.neural-core::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 20px;
+
+  border:
+    1px dashed rgba(255,255,255,.14);
+
+  border-radius: 50%;
+
+  animation:
+    orbitSpin 8s linear infinite;
+
+}
+
+.neural-core strong {
+
+  font-size: 30px;
+
+  letter-spacing: .1em;
+
+  z-index: 2;
+
+}
+
+.neural-core small {
+
+  margin-top: 8px;
+
+  font-size: 8px;
+
+  color: #777;
+
+  z-index: 2;
+
+}
+
+.neuron {
+
+  position: absolute;
+
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow:
+    0 0 20px #fff;
+
+  animation:
+    neuronPulse 1.5s infinite alternate;
+
+}
+
+.neuron.one {
+
+  left: 15%;
+
+  top: 25%;
+
+}
+
+.neuron.two {
+
+  right: 14%;
+
+  top: 20%;
+
+  animation-delay: .3s;
+
+}
+
+.neuron.three {
+
+  left: 12%;
+
+  bottom: 25%;
+
+  animation-delay: .6s;
+
+}
+
+.neuron.four {
+
+  right: 12%;
+
+  bottom: 23%;
+
+  animation-delay: .9s;
+
+}
+
+.neuron.five {
+
+  left: 48%;
+
+  top: 7%;
+
+  animation-delay: 1.2s;
+
+}
+
+.neuron.six {
+
+  left: 48%;
+
+  bottom: 7%;
+
+  animation-delay: 1.5s;
+
+}
+
+
+/* =========================================================
+   13 — NEURAL CONNECTIONS
+   ========================================================= */
+
+.neural-line {
+
+  position: absolute;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.8),
+      transparent
+    );
+
+  transform-origin: left;
+
+  animation:
+    neuralFlow 2s infinite;
+
+}
+
+.nl1 {
+
+  width: 100px;
+
+  left: 18%;
+
+  top: 27%;
+
+  transform: rotate(15deg);
+
+}
+
+.nl2 {
+
+  width: 110px;
+
+  right: 18%;
+
+  top: 25%;
+
+  transform: rotate(155deg);
+
+}
+
+.nl3 {
+
+  width: 100px;
+
+  left: 17%;
+
+  bottom: 28%;
+
+  transform: rotate(-20deg);
+
+}
+
+.nl4 {
+
+  width: 110px;
+
+  right: 18%;
+
+  bottom: 27%;
+
+  transform: rotate(200deg);
+
+}
+
+
+/* =========================================================
+   14 — FALLING STARS
+   ========================================================= */
+
+.star-field {
+
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+}
+
+.falling-star {
+
+  position: absolute;
+
+  width: 3px;
+
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow:
+    0 0 15px #fff;
+
+  animation:
+    starFall linear infinite;
+
+}
+
+.falling-star::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 1px;
+
+  height: 80px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      white,
+      transparent
+    );
+
+  top: 4px;
+
+  left: 1px;
+
+}
+
+
+/* =========================================================
+   15 — MARQUEE
+   ========================================================= */
+
+.marquee {
+
+  overflow: hidden;
+
+  border-block:
+    1px solid var(--line2);
+
+  padding: 22px 0;
+
+  white-space: nowrap;
+
+}
+
+.marquee-track {
+
+  display: flex;
+
+  width: max-content;
+
+  gap: 35px;
+
+  animation:
+    marquee 20s linear infinite;
+
+}
+
+.marquee-track span {
+
+  font-size: 14px;
+
+  letter-spacing: .25em;
+
+}
+
+.marquee-track b {
+
+  color: #666;
+
+}
+
+
+/* =========================================================
+   16 — GENERAL SECTION
+   ========================================================= */
+
+.section {
+
+  width: min(var(--max), 92%);
+
+  margin: auto;
+
+  padding:
+    150px 0;
+
+}
+
+.section-header {
+
+  margin-bottom: 65px;
+
+}
+
+.section-number {
+
+  font-size: 10px;
+
+  letter-spacing: .25em;
+
+  color: #666;
+
+  margin-bottom: 20px;
+
+}
+
+.section-title {
+
+  font-size:
+    clamp(55px, 9vw, 130px);
+
+  line-height: .85;
+
+  letter-spacing: -.08em;
+
+}
+
+.section-title span {
+
+  color: #666;
+
+}
+
+
+/* =========================================================
+   17 — SERVICE GRID
+   ========================================================= */
+
+.service-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+
+}
+
+.service-card {
+
+  position: relative;
+
+  min-height: 310px;
+
+  padding: 28px;
+
+  border:
+    1px solid #222;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.05),
+      rgba(255,255,255,.015)
+    );
+
+  overflow: hidden;
+
+  transform-style: preserve-3d;
+
+  transition:
+    border-color .4s ease,
+    background .4s ease;
+
+}
+
+.service-card:hover {
+
+  border-color: #555;
+
+  background:
+    rgba(255,255,255,.07);
+
+}
+
+.service-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+
+  height: 180px;
+
+  border-radius: 50%;
+
+  right: -90px;
+
+  bottom: -90px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139,92,246,.4),
+      transparent 70%
+    );
+
+  transition:
+    transform .7s ease;
+
+}
+
+.service-card:hover::before {
+
+  transform:
+    scale(2.5);
+
+}
+
+.service-number {
+
+  font-size: 11px;
+
+  color: #666;
+
+}
+
+.service-card h3 {
+
+  margin-top: 80px;
+
+  font-size: 28px;
+
+  letter-spacing: -.04em;
+
+}
+
+.service-card p {
+
+  margin-top: 15px;
+
+  color: #777;
+
+  line-height: 1.7;
+
+  font-size: 14px;
+
+}
+
+.service-arrow {
+
+  position: absolute;
+
+  top: 25px;
+
+  right: 25px;
+
+  font-size: 22px;
+
+}
+
+
+/* =========================================================
+   18 — WORK SECTION
+   ========================================================= */
+
+.work-list {
+
+  display: grid;
+
+  gap: 14px;
+
+}
+
+.work-card {
+
+  min-height: 370px;
+
+  border:
+    1px solid #222;
+
+  padding: 35px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: grid;
+
+  grid-template-columns:
+    80px 1fr 200px;
+
+  align-items: center;
+
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(255,255,255,.07),
+      transparent 25%
+    );
+
+}
+
+.work-index {
+
+  color: #666;
+
+  font-size: 11px;
+
+}
+
+.work-info small {
+
+  color: #666;
+
+  letter-spacing: .2em;
+
+}
+
+.work-info h3 {
+
+  font-size:
+    clamp(35px, 6vw, 78px);
+
+  letter-spacing: -.06em;
+
+  margin: 15px 0;
+
+}
+
+.work-info p {
+
+  max-width: 600px;
+
+  color: #777;
+
+  line-height: 1.7;
+
+}
+
+.work-orb {
+
+  width: 160px;
+
+  height: 160px;
+
+  border:
+    1px solid #444;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  font-size: 40px;
+
+  animation:
+    orbitSpin 12s linear infinite;
+
+}
+
+
+/* =========================================================
+   19 — ARTICLES
+   ========================================================= */
+
+.article-feature {
+
+  min-height: 430px;
+
+  border:
+    1px solid #222;
+
+  padding: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(139,92,246,.12),
+      transparent 35%
+    );
+
+}
+
+.article-feature h3 {
+
+  max-width: 760px;
+
+  font-size:
+    clamp(40px, 6vw, 82px);
+
+  letter-spacing: -.06em;
+
+  margin: 20px 0;
+
+}
+
+.article-feature p {
+
+  max-width: 650px;
+
+  color: #777;
+
+  line-height: 1.8;
+
+}
+
+.article-circle {
+
+  width: 230px;
+
+  height: 230px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid #444;
+
+  display: grid;
+
+  place-items: center;
+
+  text-align: center;
+
+  animation:
+    orbitSpin 15s linear infinite;
+
+}
+
+.article-circle strong {
+
+  font-size: 26px;
+
+}
+
+.article-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap: 12px;
+
+  margin-top: 12px;
+
+}
+
+.article-card {
+
+  min-height: 260px;
+
+  padding: 30px;
+
+  border:
+    1px solid #222;
+
+  background: #080808;
+
+}
+
+.article-card small {
+
+  color: #666;
+
+  letter-spacing: .2em;
+
+}
+
+.article-card h3 {
+
+  margin-top: 55px;
+
+  font-size: 25px;
+
+}
+
+.article-card p {
+
+  margin-top: 12px;
+
+  color: #777;
+
+  line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   20 — DASHBOARD
+   ========================================================= */
+
+.dashboard-note {
+
+  color: #666;
+
+  font-size: 12px;
+
+  margin-top: -35px;
+
+  margin-bottom: 40px;
+
+}
+
+.dashboard-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap: 12px;
+
+}
+
+.dashboard-card {
+
+  min-height: 230px;
+
+  padding: 28px;
+
+  border:
+    1px solid #222;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0d0d0d,
+      #070707
+    );
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+.dashboard-card::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 120px;
+
+  height: 120px;
+
+  border-radius: 50%;
+
+  right: -50px;
+
+  bottom: -50px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.12),
+      transparent
+    );
+
+}
+
+.dashboard-card small {
+
+  color: #666;
+
+  letter-spacing: .15em;
+
+}
+
+.dashboard-number {
+
+  display: block;
+
+  margin-top: 55px;
+
+  font-size: 58px;
+
+  font-weight: 900;
+
+  letter-spacing: -.06em;
+
+}
+
+.dashboard-card span {
+
+  color: #666;
+
+  font-size: 10px;
+
+}
+
+.rating-stars {
+
+  color: #fff;
+
+  letter-spacing: 4px;
+
+  margin-top: 10px;
+
+}
+
+
+/* =========================================================
+   21 — ABOUT
+   ========================================================= */
+
+.about-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 100px;
+
+}
+
+.about-title {
+
+  font-size:
+    clamp(65px, 10vw, 140px);
+
+  line-height: .8;
+
+  letter-spacing: -.09em;
+
+}
+
+.about-title span {
+
+  color: #666;
+
+}
+
+.about-text {
+
+  align-self: end;
+
+}
+
+.about-text p {
+
+  color: #999;
+
+  font-size: 19px;
+
+  line-height: 1.8;
+
+  margin-bottom: 25px;
+
+}
+
+.skill-list {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+}
+
+.skill {
+
+  padding: 10px 14px;
+
+  border:
+    1px solid #333;
+
+  border-radius: 100px;
+
+  font-size: 10px;
+
+  color: #aaa;
+
+}
+
+.credential {
+
+  margin-top: 35px;
+
+  padding: 25px;
+
+  border:
+    1px solid #222;
+
+  background: #080808;
+
+}
+
+.credential small {
+
+  color: #666;
+
+  letter-spacing: .15em;
+
+}
+
+.credential strong {
+
+  display: block;
+
+  margin-top: 12px;
+
+  font-size: 25px;
+
+}
+
+.credential p {
+
+  margin-top: 10px;
+
+  font-size: 12px;
+
+  color: #666;
+
+}
+
+
+/* =========================================================
+   22 — SOCIAL SECTION
+   ========================================================= */
+
+.social-section {
+
+  min-height: 650px;
+
+  position: relative;
+
+  display: grid;
+
+  place-content: center;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  border-block:
+    1px solid #222;
+
+}
+
+.social-section h2 {
+
+  position: relative;
+
+  z-index: 5;
+
+  font-size:
+    clamp(35px, 7vw, 100px);
+
+  letter-spacing: -.07em;
+
+}
+
+.social-section p {
+
+  color: #666;
+
+  margin-bottom: 25px;
+
+}
+
+.social-orbit {
+
+  position: absolute;
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  border-radius: 50%;
+
+  left: 50%;
+
+  top: 50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  animation:
+    orbitSpin 14s linear infinite;
+
+}
+
+.social-orbit.one {
+
+  width: 350px;
+
+  height: 350px;
+
+}
+
+.social-orbit.two {
+
+  width: 550px;
+
+  height: 550px;
+
+  animation-direction: reverse;
+
+}
+
+.social-orbit.three {
+
+  width: 800px;
+
+  height: 800px;
+
+  animation-duration: 25s;
+
+}
+
+
+/* =========================================================
+   23 — CONTACT
+   ========================================================= */
+
+.contact-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap: 12px;
+
+}
+
+.contact-card {
+
+  padding: 30px;
+
+  min-height: 150px;
+
+  border:
+    1px solid #222;
+
+  background: #080808;
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease;
+
+}
+
+.contact-card:hover {
+
+  transform:
+    translateY(-6px);
+
+  border-color: #555;
+
+}
+
+.contact-card small {
+
+  color: #666;
+
+  letter-spacing: .2em;
+
+}
+
+.contact-card strong {
+
+  display: block;
+
+  margin-top: 20px;
+
+  font-size: 20px;
+
+  word-break: break-word;
+
+}
+
+
+/* =========================================================
+   24 — FOOTER
+   ========================================================= */
+
+footer {
+
+  padding:
+    30px 5%;
+
+  border-top:
+    1px solid #222;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  color: #555;
+
+  font-size: 10px;
+
+  letter-spacing: .12em;
+
+}
+
+
+/* =========================================================
+   25 — REVEAL ANIMATION
+   ========================================================= */
+
+.reveal {
+
+  opacity: 0;
+
+  transform:
+    translateY(70px)
+    scale(.97);
+
+  transition:
+    opacity 1s cubic-bezier(.2,.8,.2,1),
+    transform 1s cubic-bezier(.2,.8,.2,1);
+
+}
+
+.reveal.show {
+
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+}
+
+
+/* =========================================================
+   26 — KEYFRAMES
+   ========================================================= */
+
+@keyframes loaderPulse {
+
+  0% {
+    opacity: .35;
+    transform: scale(.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: .35;
+    transform: scale(.96);
+  }
+
+}
+
+@keyframes loaderProgress {
+
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+
+}
+
+@keyframes pulse {
+
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(2);
+    opacity: .4;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+
+@keyframes orbitSpin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+@keyframes neuronPulse {
+
+  from {
+    transform: scale(.8);
+    opacity: .5;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 1;
+  }
+
+}
+
+@keyframes neuralFlow {
+
+  0% {
+    opacity: .15;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .15;
+  }
+
+}
+
+@keyframes starFall {
+
+  from {
+
+    transform:
+      translateY(-120px)
+      translateX(0);
+
+    opacity: 0;
+
+  }
+
+  15% {
+
+    opacity: 1;
+
+  }
+
+  100% {
+
+    transform:
+      translateY(110vh)
+      translateX(120px);
+
+    opacity: 0;
+
+  }
+
+}
+
+@keyframes marquee {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+}
+
+
+/* =========================================================
+   27 — MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .nav-links {
+
+    display: none;
+
+  }
+
+  .neural-core {
+
+    width: 190px;
+
+    height: 190px;
+
+    right: 3%;
+
+    top: 18%;
+
+    opacity: .7;
+
+  }
+
+  .neural-core strong {
+
+    font-size: 20px;
+
+  }
+
+  .service-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+  .dashboard-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+  .article-grid {
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+  .work-card {
+
+    grid-template-columns:
+      60px 1fr;
+
+  }
+
+  .work-orb {
+
+    display: none;
+
+  }
+
+  .about-grid {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 50px;
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .cursor-dot,
+  .cursor-ring {
+
+    display: none;
+
+  }
+
+  .hero {
+
+    padding-top: 120px;
+
+  }
+
+  .hero-title {
+
+    font-size:
+      clamp(75px, 22vw, 140px);
+
+  }
+
+  .hero-description {
+
+    font-size: 14px;
+
+  }
+
+  .orbit-one {
+
+    width: 230px;
+
+    height: 230px;
+
+  }
+
+  .orbit-two {
+
+    width: 360px;
+
+    height: 360px;
+
+  }
+
+  .orbit-three {
+
+    width: 500px;
+
+    height: 500px;
+
+  }
+
+  .neural-core {
+
+    position: relative;
+
+    right: auto;
+
+    top: auto;
+
+    margin:
+      60px auto 0;
+
+  }
+
+  .service-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+  .article-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+  .dashboard-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+  .article-feature {
+
+    display: block;
+
+    padding: 30px;
+
+  }
+
+  .article-circle {
+
+    margin:
+      40px auto 0;
+
+    width: 180px;
+
+    height: 180px;
+
+  }
+
+  .contact-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+  footer {
+
+    display: block;
+
+    line-height: 2;
+
+  }
+
+  .section {
+
+    padding:
+      100px 0;
+
+  }
+
+}
+
+
+/* =========================================================
+   28 — REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  * {
+
+    animation-duration:
+      .01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    scroll-behavior:
+      auto !important;
+
+    transition-duration:
+      .01ms !important;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   30 — SCROLL WORD REVEAL + AI COMMAND DOCK + POLICY
+   Lightweight transform/opacity animations for touch devices.
+   ========================================================= */
+.scroll-word{
+  display:inline-block;
+  opacity:.18;
+  transform:translate3d(0,28px,0) rotateX(18deg);
+  transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1);
+  will-change:transform,opacity;
+}
+.scroll-word.is-visible{
+  opacity:1;
+  transform:translate3d(0,0,0) rotateX(0);
+}
+.policy-section{
+  position:relative;
+  padding:110px 5% 90px;
+  border-top:1px solid var(--line);
+  overflow:hidden;
+}
+.policy-shell{
+  width:min(1050px,95%);
+  margin:auto;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:28px;
+  padding:34px;
+  background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(34,211,238,.035),rgba(255,255,255,.025));
+  box-shadow:0 0 70px rgba(139,92,246,.08);
+}
+.policy-badge{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  font-size:9px;
+  letter-spacing:.2em;
+  color:#aaa;
+}
+.policy-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff;}
+.policy-title{margin-top:16px;font-size:clamp(32px,6vw,72px);line-height:.95;letter-spacing:-.05em;}
+.policy-text{max-width:760px;margin-top:22px;color:#888;line-height:1.8;font-size:13px;}
+.policy-mini{margin-top:24px;color:#666;font-size:10px;line-height:1.7;}
+.ai-dock{
+  position:fixed;right:18px;bottom:18px;z-index:1200;
+  width:min(360px,calc(100vw - 36px));
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(4,4,7,.82);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border-radius:22px;
+  box-shadow:0 20px 80px rgba(0,0,0,.45);
+  overflow:hidden;
+}
+.ai-head{display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.08);}
+.ai-brand{display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.18em;font-weight:800;}
+.ai-status{width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 16px #fff;animation:pulse 1.3s infinite;}
+.ai-toggle{border:1px solid #333;background:#0c0c0c;color:#fff;border-radius:999px;padding:7px 10px;font-size:9px;cursor:pointer;}
+.ai-body{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s ease,opacity .3s ease;}
+.ai-dock.open .ai-body{max-height:330px;opacity:1;}
+.ai-copy{padding:15px;color:#aaa;font-size:12px;line-height:1.65;}
+.ai-copy strong{color:#fff;}
+.ai-actions{display:flex;gap:8px;padding:0 15px 15px;flex-wrap:wrap;}
+.ai-actions a{display:inline-flex;align-items:center;gap:7px;border:1px solid #333;border-radius:999px;padding:9px 12px;font-size:9px;color:#fff;}
+.ai-actions a.primary{background:#fff;color:#000;border-color:#fff;}
+.x-mini{position:fixed;right:18px;bottom:92px;z-index:1199;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.2);background:rgba(5,5,5,.72);backdrop-filter:blur(14px);font-size:12px;font-weight:900;}
+@media(max-width:600px){.ai-dock{right:10px;bottom:10px;width:calc(100vw - 20px)}.x-mini{right:12px;bottom:82px}.policy-shell{padding:24px;border-radius:22px}}
+@media(prefers-reduced-motion:reduce){.scroll-word,.ai-body{transition:none}.ai-status{animation:none}}
+</style>
+<style>
+
+/* =========================================================
+   29 — EXTREME MOTION / 3D / NEURAL / CLICK SYSTEM
+   ADDED LAYER — ORIGINAL WEBSITE CONTENT PRESERVED
+   ========================================================= */
+
+:root{
+  --mx:50vw;
+  --my:50vh;
+  --scroll-p:0;
+  --motion-power:1;
+}
+
+body{
+  perspective:1400px;
+  transform-style:preserve-3d;
+}
+
+/* Deep cinematic 3D atmosphere */
+.motion-atmosphere{
+  position:fixed;
+  inset:-15%;
+  z-index:-4;
+  pointer-events:none;
+  transform-style:preserve-3d;
+  perspective:1200px;
+  overflow:hidden;
+}
+.motion-atmosphere .cube{
+  position:absolute;
+  width:clamp(70px,9vw,150px);
+  height:clamp(70px,9vw,150px);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 0 50px rgba(139,92,246,.08), inset 0 0 40px rgba(34,211,238,.04);
+  transform-style:preserve-3d;
+  animation:cubeFloat 13s ease-in-out infinite;
+}
+.motion-atmosphere .cube::before,
+.motion-atmosphere .cube::after{
+  content:"";
+  position:absolute;
+  inset:15%;
+  border:1px solid rgba(255,255,255,.10);
+  transform:translateZ(35px) rotate(45deg);
+}
+.motion-atmosphere .cube::after{
+  transform:translateZ(-35px) rotate(-45deg);
+}
+.motion-atmosphere .c1{left:7%;top:18%;animation-delay:-2s}
+.motion-atmosphere .c2{right:9%;top:42%;animation-delay:-6s;animation-duration:17s}
+.motion-atmosphere .c3{left:42%;bottom:8%;animation-delay:-9s;animation-duration:20s}
+.motion-atmosphere .c4{right:30%;top:10%;transform:scale(.55);animation-delay:-4s;animation-duration:15s}
+
+@keyframes cubeFloat{
+  0%,100%{transform:translate3d(0,0,-40px) rotateX(0) rotateY(0) rotateZ(0)}
+  25%{transform:translate3d(45px,-35px,80px) rotateX(90deg) rotateY(120deg) rotateZ(25deg)}
+  50%{transform:translate3d(-30px,55px,130px) rotateX(180deg) rotateY(220deg) rotateZ(70deg)}
+  75%{transform:translate3d(65px,25px,20px) rotateX(270deg) rotateY(310deg) rotateZ(110deg)}
+}
+
+/* 3D floating rings */
+.holo-ring{
+  position:fixed;
+  width:clamp(180px,28vw,460px);
+  height:clamp(180px,28vw,460px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-3;
+  transform-style:preserve-3d;
+  left:var(--mx);
+  top:var(--my);
+  margin:-14vw 0 0 -14vw;
+  animation:holoSpin 18s linear infinite;
+}
+.holo-ring::before,
+.holo-ring::after{
+  content:"";
+  position:absolute;
+  inset:12%;
+  border:1px dashed rgba(139,92,246,.18);
+  border-radius:50%;
+}
+.holo-ring::after{
+  inset:25%;
+  border-color:rgba(34,211,238,.16);
+}
+.holo-ring.r2{animation-duration:27s;animation-direction:reverse;transform:rotateX(67deg)}
+.holo-ring.r3{animation-duration:35s;transform:rotateY(68deg)}
+@keyframes holoSpin{
+  from{transform:rotateX(62deg) rotateZ(0deg)}
+  to{transform:rotateX(62deg) rotateZ(360deg)}
+}
+
+/* Enhanced cards: depth, glow and sweep */
+.service-card,
+.work-card,
+.article-card,
+.dashboard-card,
+.contact-card,
+.article-feature,
+.credential{
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.service-card::after,
+.work-card::after,
+.article-card::after,
+.dashboard-card::before,
+.contact-card::after,
+.article-feature::after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  left:var(--spot-x,50%);
+  top:var(--spot-y,50%);
+  transform:translate(-50%,-50%) translateZ(25px);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.13),rgba(139,92,246,.06),transparent 70%);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
+}
+.service-card:hover::after,
+.work-card:hover::after,
+.article-card:hover::after,
+.dashboard-card:hover::before,
+.contact-card:hover::after,
+.article-feature:hover::after{opacity:1}
+
+/* 3D text depth */
+.hero-title,
+.section-title,
+.about-title{
+  text-shadow:
+    1px 1px 0 rgba(255,255,255,.10),
+    3px 3px 0 rgba(139,92,246,.08),
+    7px 7px 30px rgba(0,0,0,.7);
+  transform-style:preserve-3d;
+}
+
+/* Neural command HUD */
+.neural-hud{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:600;
+  width:210px;
+  padding:12px 14px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  background:rgba(3,3,3,.58);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 0 35px rgba(139,92,246,.08);
+  pointer-events:none;
+  overflow:hidden;
+}
+.neural-hud::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+  transform:translateX(-100%);
+  animation:hudScan 3s linear infinite;
+}
+.neural-hud .hud-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font:8px/1.6 Arial,sans-serif;
+  letter-spacing:.16em;
+  color:#666;
+}
+.neural-hud strong{color:#fff;font-size:9px}
+.hud-dot{
+  display:inline-block;
+  width:5px;height:5px;border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 12px #fff;
+  animation:pulse 1s infinite;
+}
+@keyframes hudScan{to{transform:translateX(100%)}}
+
+/* Neural canvas is deliberately behind content */
+#neuralCanvas{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  mix-blend-mode:screen;
+}
+
+/* Click shockwave */
+.click-shockwave{
+  position:fixed;
+  width:20px;
+  height:20px;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:10001;
+  transform:translate(-50%,-50%) scale(.2);
+  animation:shock .75s cubic-bezier(.15,.8,.2,1) forwards;
+  box-shadow:0 0 20px rgba(255,255,255,.6),0 0 60px rgba(139,92,246,.35);
+}
+.click-shockwave::before,
+.click-shockwave::after{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border:1px solid rgba(34,211,238,.45);
+  border-radius:50%;
+  animation:shockRing .75s ease-out forwards;
+}
+.click-shockwave::after{inset:-25px;border-color:rgba(236,72,153,.28)}
+@keyframes shock{
+  to{transform:translate(-50%,-50%) scale(12);opacity:0}
+}
+@keyframes shockRing{
+  to{transform:scale(2);opacity:0}
+}
+
+/* Click ripple on interactive elements */
+.click-ripple{
+  position:absolute;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:rgba(255,255,255,.65);
+  transform:translate(-50%,-50%) scale(0);
+  pointer-events:none;
+  animation:rippleExpand .65s ease-out forwards;
+  box-shadow:0 0 25px rgba(255,255,255,.6);
+}
+@keyframes rippleExpand{
+  to{transform:translate(-50%,-50%) scale(16);opacity:0}
+}
+
+/* Energy beam following pointer */
+.pointer-beam{
+  position:fixed;
+  left:0;top:0;
+  width:110px;height:1px;
+  transform-origin:left center;
+  background:linear-gradient(90deg,rgba(255,255,255,.0),rgba(255,255,255,.7),rgba(139,92,246,0));
+  pointer-events:none;
+  z-index:9998;
+  opacity:.45;
+  filter:blur(.3px);
+}
+
+/* Scroll velocity distortion */
+.scroll-flash{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:95;
+  opacity:0;
+  background:radial-gradient(circle at 50% 50%,transparent 35%,rgba(139,92,246,.035),transparent 70%);
+}
+body.scroll-fast .scroll-flash{animation:scrollFlash .32s ease-out}
+@keyframes scrollFlash{
+  0%{opacity:0;transform:scale(.98)}
+  35%{opacity:1}
+  100%{opacity:0;transform:scale(1.03)}
+}
+
+/* Holographic section separators */
+.section::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  width:1px;
+  height:90px;
+  margin-top:-150px;
+  background:linear-gradient(to bottom,transparent,rgba(255,255,255,.35),transparent);
+  opacity:.35;
+  transform:translateX(-50%);
+}
+.section{position:relative}
+
+/* Stronger interactive feedback */
+a,button,.service-card,.work-card,.article-card,.dashboard-card,.contact-card,.skill{
+  -webkit-tap-highlight-color:transparent;
+}
+@media (hover:hover) and (pointer:fine){
+a:active,.service-card:active,.work-card:active,.article-card:active,.dashboard-card:active{
+  transform:scale(.985);
+}
+}
+
+/* Mobile performance guard: touch never triggers geometric card transforms. */
+@media (hover:none), (pointer:coarse){
+  .service-card,.work-card,.article-card,.dashboard-card,.contact-card{
+    transform:none !important;
+  }
+  .click-shockwave,.click-ripple{display:none !important;}
+}
+
+/* Mobile keeps motion but reduces geometry density */
+@media(max-width:900px){
+  .motion-atmosphere .c3,.motion-atmosphere .c4{display:none}
+  .neural-hud{left:10px;bottom:10px;width:175px;opacity:.72}
+  .holo-ring{opacity:.35}
+}
+@media(max-width:600px){
+  .motion-atmosphere .cube{opacity:.35}
+  .holo-ring{opacity:.22}
+  .neural-hud{transform:scale(.82);transform-origin:bottom left}
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<!-- =======================================================
+     EXTREME MOTION LAYERS — ADDITIVE ONLY
+     ======================================================= -->
+<div class="motion-atmosphere" aria-hidden="true">
+  <div class="cube c1"></div>
+  <div class="cube c2"></div>
+  <div class="cube c3"></div>
+  <div class="cube c4"></div>
+</div>
+<div class="holo-ring r1" aria-hidden="true"></div>
+<div class="holo-ring r2" aria-hidden="true"></div>
+<div class="holo-ring r3" aria-hidden="true"></div>
+<canvas id="neuralCanvas" aria-hidden="true"></canvas>
+<div class="pointer-beam" aria-hidden="true"></div>
+<div class="scroll-flash" aria-hidden="true"></div>
+<div class="neural-hud" aria-hidden="true">
+  <div class="hud-row"><strong>NEURAL MOTION</strong><span class="hud-dot"></span></div>
+  <div class="hud-row"><span>3D CORE</span><b>ONLINE</b></div>
+  <div class="hud-row"><span>CLICK MATRIX</span><b>READY</b></div>
+</div>
+
+
+
+<!-- =======================================================
+     LOADER
+     ======================================================= -->
+
+<div id="loader">
+
+  <div class="loader-logo">
+    WAQAR
+  </div>
+
+  <div class="loader-bar">
+    <span></span>
+  </div>
+
+  <div class="loader-sub">
+    ENTERING DIGITAL EXPERIENCE
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     VISUAL LAYERS
+     ======================================================= -->
+
+<div class="noise"></div>
+
+<canvas id="spaceCanvas"></canvas>
+
+<div class="cursor-dot"></div>
+
+<div class="cursor-ring"></div>
+
+<div class="scroll-progress"></div>
+
+
+<!-- =======================================================
+     NAVIGATION
+     ======================================================= -->
+
+<header class="nav">
+
+  <a
+    href="#home"
+    class="brand magnetic"
+  >
+    WAQAR<span>.</span>
+  </a>
+
+
+  <nav class="nav-links">
+
+    <a href="#home">
+      Home
+    </a>
+
+    <a href="#services">
+      Services
+    </a>
+
+    <a href="#work">
+      Work
+    </a>
+
+    <a href="#articles">
+      Articles
+    </a>
+
+    <a href="#dashboard">
+      Dashboard
+    </a>
+
+    <a href="#contact">
+      Contact
+    </a>
+
+  </nav>
+
+
+  <a
+    href="#contact"
+    class="nav-button magnetic"
+  >
+    LET'S BUILD
+  </a>
+
+</header>
+
+
+<!-- =======================================================
+     HERO
+     ======================================================= -->
+
+<main>
+
+
+<section
+  id="home"
+  class="hero"
+>
+
+
+  <div class="hero-grid"></div>
+
+
+  <!-- Falling Stars -->
+
+  <div class="star-field">
+
+    <i
+      class="falling-star"
+      style="left:5%;animation-duration:4s;animation-delay:0s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:12%;animation-duration:6s;animation-delay:1s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:20%;animation-duration:5s;animation-delay:2s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:28%;animation-duration:7s;animation-delay:.5s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:38%;animation-duration:4.5s;animation-delay:1.5s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:48%;animation-duration:6.5s;animation-delay:3s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:58%;animation-duration:5.5s;animation-delay:1s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:68%;animation-duration:7s;animation-delay:2.5s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:78%;animation-duration:4s;animation-delay:0.8s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:88%;animation-duration:6s;animation-delay:3.5s"
+    ></i>
+
+    <i
+      class="falling-star"
+      style="left:95%;animation-duration:5s;animation-delay:1.7s"
+    ></i>
+
+  </div>
+
+
+  <!-- Orbit System -->
+
+  <div class="orbit orbit-one"></div>
+
+  <div class="orbit orbit-two"></div>
+
+  <div class="orbit orbit-three"></div>
+
+
+  <!-- Main Content -->
+
+  <div
+    class="hero-content reveal"
+  >
+
+    <div class="eyebrow">
+      WEBSITE DEVELOPER / DIGITAL CREATOR
+    </div>
+
+
+    <h1 class="hero-title">
+      WAQAR<sup>®</sup>
+    </h1>
+
+
+    <p class="hero-description">
+
+      I create modern websites with powerful visual design,
+      responsive layouts, interactive experiences and
+      motion-focused interfaces.
+
+    </p>
+
+
+    <div class="hero-buttons">
+
+      <a
+        href="#work"
+        class="btn btn-primary magnetic"
+      >
+        EXPLORE WORK
+        <b>↗</b>
+      </a>
+
+
+      <a
+        href="https://www.instagram.com/waqar_website_devloper?stkn=MWVibDBiODU1Zmh5eQ=="
+        target="_blank"
+        rel="noopener"
+        class="btn btn-secondary magnetic"
+      >
+        INSTAGRAM
+        <b>↗</b>
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- Neural Instagram Identity -->
+
+  <div class="neural-core">
+
+    <div class="neuron one"></div>
+
+    <div class="neuron two"></div>
+
+    <div class="neuron three"></div>
+
+    <div class="neuron four"></div>
+
+    <div class="neuron five"></div>
+
+    <div class="neuron six"></div>
+
+
+    <div class="neural-line nl1"></div>
+
+    <div class="neural-line nl2"></div>
+
+    <div class="neural-line nl3"></div>
+
+    <div class="neural-line nl4"></div>
+
+
+    <strong>
+      WAQAR
+    </strong>
+
+    <small>
+      @waqar_website_devloper
+    </small>
+
+  </div>
+
+
+</section>
+
+
+<!-- =======================================================
+     MARQUEE
+     ======================================================= -->
+
+<section class="marquee">
+
+  <div class="marquee-track">
+
+    <span>DESIGN</span>
+
+    <b>✦</b>
+
+    <span>CODE</span>
+
+    <b>✦</b>
+
+    <span>MOTION</span>
+
+    <b>✦</b>
+
+    <span>WEB</span>
+
+    <b>✦</b>
+
+    <span>CREATIVE</span>
+
+    <b>✦</b>
+
+    <span>EXPERIENCE</span>
+
+    <b>✦</b>
+
+    <span>WAQAR</span>
+
+    <b>✦</b>
+
+    <span>DESIGN</span>
+
+    <b>✦</b>
+
+    <span>CODE</span>
+
+    <b>✦</b>
+
+    <span>MOTION</span>
+
+    <b>✦</b>
+
+    <span>WEB</span>
+
+    <b>✦</b>
+
+    <span>CREATIVE</span>
+
+    <b>✦</b>
+
+    <span>EXPERIENCE</span>
+
+    <b>✦</b>
+
+    <span>WAQAR</span>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     SERVICES
+     ======================================================= -->
+
+<section
+  id="services"
+  class="section"
+>
+
+  <div class="section-header reveal">
+
+    <div class="section-number">
+      01 / SERVICES
+    </div>
+
+    <h2 class="section-title">
+      BUILT TO
+      <span>MOVE.</span>
+    </h2>
+
+  </div>
+
+
+  <div class="service-grid">
+
+
+    <article
+      class="service-card tilt reveal"
+    >
+
+      <span class="service-number">
+        01
+      </span>
+
+      <span class="service-arrow">
+        ↗
+      </span>
+
+      <h3>
+        Business Websites
+      </h3>
+
+      <p>
+        Professional responsive websites
+        for businesses, brands and services.
+      </p>
+
+    </article>
+
+
+    <article
+      class="service-card tilt reveal"
+    >
+
+      <span class="service-number">
+        02
+      </span>
+
+      <span class="service-arrow">
+        ↗
+      </span>
+
+      <h3>
+        Landing Pages
+      </h3>
+
+      <p>
+        High-impact landing pages with
+        clean hierarchy and strong visual
+        presentation.
+      </p>
+
+    </article>
+
+
+    <article
+      class="service-card tilt reveal"
+    >
+
+      <span class="service-number">
+        03
+      </span>
+
+      <span class="service-arrow">
+        ↗
+      </span>
+
+      <h3>
+        Motion UI
+      </h3>
+
+      <p>
+        Scroll reveals, particles,
+        hover interactions and cinematic
+        transitions.
+      </p>
+
+    </article>
+
+
+    <article
+      class="service-card tilt reveal"
+    >
+
+      <span class="service-number">
+        04
+      </span>
+
+      <span class="service-arrow">
+        ↗
+      </span>
+
+      <h3>
+        Portfolio Websites
+      </h3>
+
+      <p>
+        Personal digital identities designed
+        around skills, work and personality.
+      </p>
+
+    </article>
+
+
+    <article
+      class="service-card tilt reveal"
+    >
+
+      <span class="service-number">
+        05
+      </span>
+
+      <span class="service-arrow">
+        ↗
+      </span>
+
+      <h3>
+        UI Development
+      </h3>
+
+      <p>
+        HTML, CSS and JavaScript interfaces
+        built for responsive screens.
+      </p>
+
+    </article>
+
+
+    <article
+      class="service-card tilt reveal"
+    >
+
+      <span class="service-number">
+        06
+      </span>
+
+      <span class="service-arrow">
+        ↗
+      </span>
+
+      <h3>
+        Website Upgrade
+      </h3>
+
+      <p>
+        Transform an existing website with
+        better layout, interaction and motion.
+      </p>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     WORK
+     ======================================================= -->
+
+<section
+  id="work"
+  class="section"
+>
+
+  <div class="section-header reveal">
+
+    <div class="section-number">
+      02 / SELECTED WORK
+    </div>
+
+    <h2 class="section-title">
+      THE
+      <span>SHOWCASE.</span>
+    </h2>
+
+  </div>
+
+
+  <div class="work-list">
+
+
+    <article
+      class="work-card reveal"
+    >
+
+      <div class="work-index">
+        01
+      </div>
+
+      <div class="work-info">
+
+        <small>
+          BUSINESS / DIGITAL EXPERIENCE
+        </small>
+
+        <h3>
+          Premium Business
+        </h3>
+
+        <p>
+          A cinematic business website concept
+          with bold typography, layered visuals
+          and interactive sections.
+        </p>
+
+      </div>
+
+      <div class="work-orb">
+        01
+      </div>
+
+    </article>
+
+
+    <article
+      class="work-card reveal"
+    >
+
+      <div class="work-index">
+        02
+      </div>
+
+      <div class="work-info">
+
+        <small>
+          FOOD / BAKERY EXPERIENCE
+        </small>
+
+        <h3>
+          Luxury Bakery
+        </h3>
+
+        <p>
+          A premium food website concept
+          focused on menu presentation,
+          motion and visual storytelling.
+        </p>
+
+      </div>
+
+      <div class="work-orb">
+        02
+      </div>
+
+    </article>
+
+
+    <article
+      class="work-card reveal"
+    >
+
+      <div class="work-index">
+        03
+      </div>
+
+      <div class="work-info">
+
+        <small>
+          PERSONAL / DEVELOPER
+        </small>
+
+        <h3>
+          Waqar Identity
+        </h3>
+
+        <p>
+          A digital developer identity combining
+          articles, skills, work and social presence.
+        </p>
+
+      </div>
+
+      <div class="work-orb">
+        03
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     ARTICLES
+     ======================================================= -->
+
+<section
+  id="articles"
+  class="section"
+>
+
+  <div class="section-header reveal">
+
+    <div class="section-number">
+      03 / ARTICLES
+    </div>
+
+    <h2 class="section-title">
+      THINK.
+      <span>BUILD.</span>
+      REPEAT.
+    </h2>
+
+  </div>
+
+
+  <article
+    class="article-feature reveal"
+  >
+
+    <div>
+
+      <small>
+        FEATURED ARTICLE
+      </small>
+
+      <h3>
+        The Future Of Motion Web Design
+      </h3>
+
+      <p>
+        Modern websites are becoming more
+        interactive. Motion can guide attention,
+        communicate hierarchy and make a digital
+        experience memorable when used carefully.
+      </p>
+
+      <a
+        href="#contact"
+        class="btn btn-secondary magnetic"
+        style="margin-top:25px"
+      >
+        READ CONCEPT ↗
+      </a>
+
+    </div>
+
+
+    <div class="article-circle">
+
+      <strong>
+        WEB<br>
+        +<br>
+        MOTION
+      </strong>
+
+    </div>
+
+  </article>
+
+
+  <div class="article-grid">
+
+
+    <article
+      class="article-card reveal"
+    >
+
+      <small>
+        UI / UX
+      </small>
+
+      <h3>
+        Designing Above The Fold
+      </h3>
+
+      <p>
+        Make the first screen clear,
+        memorable and useful.
+      </p>
+
+    </article>
+
+
+    <article
+      class="article-card reveal"
+    >
+
+      <small>
+        CODE
+      </small>
+
+      <h3>
+        CSS That Feels Alive
+      </h3>
+
+      <p>
+        Combine transforms, gradients
+        and keyframes to create movement.
+      </p>
+
+    </article>
+
+
+    <article
+      class="article-card reveal"
+    >
+
+      <small>
+        PERFORMANCE
+      </small>
+
+      <h3>
+        Motion Without Lag
+      </h3>
+
+      <p>
+        Beautiful motion should still
+        feel smooth on mobile devices.
+      </p>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     DASHBOARD
+     ======================================================= -->
+
+<section
+  id="dashboard"
+  class="section"
+>
+
+  <div class="section-header reveal">
+
+    <div class="section-number">
+      04 / CREATOR DASHBOARD
+    </div>
+
+    <h2 class="section-title">
+      WAQAR
+      <span>CONTROL.</span>
+    </h2>
+
+  </div>
+
+
+  <p class="dashboard-note reveal">
+
+    Portfolio dashboard values below are
+    illustrative demo metrics. Replace them
+    with your real project and review numbers.
+
+  </p>
+
+
+  <div class="dashboard-grid">
+
+
+    <div
+      class="dashboard-card reveal"
+    >
+
+      <small>
+        PROJECTS
+      </small>
+
+      <strong
+        class="dashboard-number"
+        data-count="24"
+      >
+        0
+      </strong>
+
+      <span>
+        Demo portfolio metric
+      </span>
+
+    </div>
+
+
+    <div
+      class="dashboard-card reveal"
+    >
+
+      <small>
+        WEBSITES
+      </small>
+
+      <strong
+        class="dashboard-number"
+        data-count="18"
+      >
+        0
+      </strong>
+
+      <span>
+        Demo portfolio metric
+      </span>
+
+    </div>
+
+
+    <div
+      class="dashboard-card reveal"
+    >
+
+      <small>
+        SATISFACTION
+      </small>
+
+      <strong
+        class="dashboard-number"
+        data-count="98"
+      >
+        0
+      </strong>
+
+      <span>
+        % — demo metric
+      </span>
+
+    </div>
+
+
+    <div
+      class="dashboard-card reveal"
+    >
+
+      <small>
+        DEMO RATING
+      </small>
+
+      <strong
+        class="dashboard-number"
+      >
+        4.9
+      </strong>
+
+      <div class="rating-stars">
+        ★★★★★
+      </div>
+
+      <span>
+        Illustrative rating — not external reviews
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     ABOUT
+     ======================================================= -->
+
+<section
+  id="about"
+  class="section"
+>
+
+  <div class="about-grid">
+
+
+    <div class="reveal">
+
+      <div class="section-number">
+        05 / ABOUT
+      </div>
+
+      <h2 class="about-title">
+
+        CODE.<br>
+
+        CREATE.<br>
+
+        <span>MOVE.</span>
+
+      </h2>
+
+    </div>
+
+
+    <div class="about-text reveal">
+
+      <p>
+        Waqar is a website developer and
+        digital creator focused on modern,
+        responsive and motion-rich websites.
+      </p>
+
+
+      <p>
+        The goal is simple:
+        combine clean development with
+        memorable digital experiences.
+      </p>
+
+
+      <div class="skill-list">
+
+        <span class="skill">
+          HTML
+        </span>
+
+        <span class="skill">
+          CSS
+        </span>
+
+        <span class="skill">
+          JAVASCRIPT
+        </span>
+
+        <span class="skill">
+          RESPONSIVE UI
+        </span>
+
+        <span class="skill">
+          MOTION
+        </span>
+
+        <span class="skill">
+          UI DESIGN
+        </span>
+
+      </div>
+
+
+      <div class="credential">
+
+        <small>
+          PROFILE CREDENTIAL
+        </small>
+
+        <strong>
+          WEBSITE DEVELOPER
+        </strong>
+
+        <p>
+          Skill-based portfolio credential.
+          No fabricated degree or certificate
+          is claimed here.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     INSTAGRAM
+     ======================================================= -->
+
+<section
+  class="social-section"
+>
+
+
+  <div class="social-orbit one"></div>
+
+  <div class="social-orbit two"></div>
+
+  <div class="social-orbit three"></div>
+
+
+  <div class="reveal">
+
+    <p>
+      FOLLOW THE BUILD
+    </p>
+
+
+    <h2>
+      @waqar_website_devloper
+    </h2>
+
+
+    <a
+      href="https://www.instagram.com/waqar_website_devloper?stkn=MWVibDBiODU1Zmh5eQ=="
+      target="_blank"
+      rel="noopener"
+      class="btn btn-primary magnetic"
+      style="margin-top:30px"
+    >
+      OPEN INSTAGRAM ↗
+    </a>
+
+  </div>
+
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+     ======================================================= -->
+
+<section
+  id="contact"
+  class="section"
+>
+
+  <div class="section-header reveal">
+
+    <div class="section-number">
+      06 / CONTACT
+    </div>
+
+    <h2 class="section-title">
+      LET'S BUILD<br>
+      <span>SOMETHING BIG.</span>
+    </h2>
+
+  </div>
+
+
+  <div class="contact-grid">
+
+
+    <a
+      href="tel:+919336791031"
+      class="contact-card reveal"
+    >
+
+      <small>
+        PHONE
+      </small>
+
+      <strong>
+        9336791031
+      </strong>
+
+    </a>
+
+
+    <a
+      href="https://wa.me/919235528409"
+      target="_blank"
+      rel="noopener"
+      class="contact-card reveal"
+    >
+
+      <small>
+        WHATSAPP
+      </small>
+
+      <strong>
+        9235528409
+      </strong>
+
+    </a>
+
+
+    <a
+      href="mailto:ww8256972@gmail.com"
+      class="contact-card reveal"
+    >
+
+      <small>
+        EMAIL
+      </small>
+
+      <strong>
+        ww8256972@gmail.com
+      </strong>
+
+    </a>
+
+
+    <a
+      href="https://www.instagram.com/waqar_website_devloper?stkn=MWVibDBiODU1Zmh5eQ=="
+      target="_blank"
+      rel="noopener"
+      class="contact-card reveal"
+    >
+
+      <small>
+        INSTAGRAM
+      </small>
+
+      <strong>
+        @waqar_website_devloper
+      </strong>
+
+    </a>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FINAL POLICY + AI INFORMATION
+     ======================================================= -->
+<section class="policy-section" id="policy">
+  <div class="policy-shell reveal">
+    <div class="policy-badge">FINAL POLICY / PORTFOLIO NOTE</div>
+    <h2 class="policy-title">BUILD WITH <span>WAQAR.</span></h2>
+    <p class="policy-text">
+      This portfolio presents Waqar as a website developer and digital creator focused on modern, responsive, interactive and motion-rich websites.
+      Project cards and dashboard figures marked as demo or illustrative should be treated as portfolio concepts, not independent client reviews or verified business statistics.
+    </p>
+    <p class="policy-mini">
+      Information shown here is intended for portfolio and demonstration purposes. Contact details are provided so visitors can directly discuss website design, development, upgrades, UI, responsive work and motion experiences.
+    </p>
+  </div>
+</section>
+
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
+
+<footer>
+
+  <span>
+    WAQAR © 2026
+  </span>
+
+  <span>
+    WEBSITE DEVELOPER / DIGITAL CREATOR
+  </span>
+
+</footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+     EVERYTHING BELOW IS ALSO INSIDE INDEX.HTML
+     ======================================================= -->
+
+<script>
+
+
+/* =========================================================
+   01 — SELECTORS
+   ========================================================= */
+
+const $ = (selector) => {
+
+  return document.querySelector(selector);
+
+};
+
+
+const $$ = (selector) => {
+
+  return document.querySelectorAll(selector);
+
+};
+
+
+/* =========================================================
+   02 — LOADER
+   ========================================================= */
+
+window.addEventListener(
+  "load",
+  () => {
+
+    setTimeout(
+      () => {
+
+        const loader =
+          document.getElementById("loader");
+
+        if (!loader) return;
+
+        loader.style.opacity = "0";
+
+        loader.style.visibility =
+          "hidden";
+
+      },
+      2400
+    );
+
+  }
+);
+
+
+/* =========================================================
+   03 — CUSTOM CURSOR
+   ========================================================= */
+
+const cursorDot =
+  $(".cursor-dot");
+
+const cursorRing =
+  $(".cursor-ring");
+
+
+let mouseX =
+  window.innerWidth / 2;
+
+let mouseY =
+  window.innerHeight / 2;
+
+let ringX =
+  mouseX;
+
+let ringY =
+  mouseY;
+
+
+window.addEventListener(
+  "pointermove",
+  (event) => {
+
+    mouseX =
+      event.clientX;
+
+    mouseY =
+      event.clientY;
+
+  }
+);
+
+
+function cursorAnimation() {
+
+  ringX +=
+    (mouseX - ringX) * .16;
+
+  ringY +=
+    (mouseY - ringY) * .16;
+
+
+  if (cursorDot) {
+
+    cursorDot.style.left =
+      mouseX + "px";
+
+    cursorDot.style.top =
+      mouseY + "px";
+
+  }
+
+
+  if (cursorRing) {
+
+    cursorRing.style.left =
+      ringX + "px";
+
+    cursorRing.style.top =
+      ringY + "px";
+
+  }
+
+
+  requestAnimationFrame(
+    cursorAnimation
+  );
+
+}
+
+
+cursorAnimation();
+
+
+/* =========================================================
+   04 — CURSOR HOVER
+   ========================================================= */
+
+$$(
+  "a,.service-card,.work-card,.article-card,.dashboard-card"
+).forEach(
+  (element) => {
+
+    element.addEventListener(
+      "mouseenter",
+      () => {
+
+        cursorRing?.classList.add(
+          "active"
+        );
+
+      }
+    );
+
+
+    element.addEventListener(
+      "mouseleave",
+      () => {
+
+        cursorRing?.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   05 — SCROLL PROGRESS
+   ========================================================= */
+
+const progress =
+  $(".scroll-progress");
+
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    const documentHeight =
+      document.documentElement.scrollHeight;
+
+    const viewportHeight =
+      window.innerHeight;
+
+    const maxScroll =
+      documentHeight -
+      viewportHeight;
+
+
+    if (maxScroll <= 0) {
+
+      progress.style.width =
+        "0%";
+
+      return;
+
+    }
+
+
+    const percentage =
+      (window.scrollY / maxScroll) *
+      100;
+
+
+    progress.style.width =
+      percentage + "%";
+
+  },
+  {
+    passive: true
+  }
+);
+
+
+/* =========================================================
+   06 — REVEAL OBSERVER
+   ========================================================= */
+
+const revealObserver =
+  new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach(
+        (entry) => {
+
+          if (
+            entry.isIntersecting
+          ) {
+
+            entry.target.classList.add(
+              "show"
+            );
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold: .12
+    }
+  );
+
+
+$$(".reveal").forEach(
+  (element) => {
+
+    revealObserver.observe(
+      element
+    );
+
+  }
+);
+
+
+/* =========================================================
+   07 — COUNTERS
+   ========================================================= */
+
+function animateCounter(
+  element
+) {
+
+  const target =
+    Number(
+      element.dataset.count
+    );
+
+
+  const duration =
+    1500;
+
+  const startTime =
+    performance.now();
+
+
+  function update(
+    currentTime
+  ) {
+
+    const elapsed =
+      currentTime -
+      startTime;
+
+
+    const progress =
+      Math.min(
+        elapsed / duration,
+        1
+      );
+
+
+    const eased =
+      1 -
+      Math.pow(
+        1 - progress,
+        3
+      );
+
+
+    element.textContent =
+      Math.round(
+        target * eased
+      );
+
+
+    if (
+      progress < 1
+    ) {
+
+      requestAnimationFrame(
+        update
+      );
+
+    }
+
+  }
+
+
+  requestAnimationFrame(
+    update
+  );
+
+}
+
+
+const counterObserver =
+  new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach(
+        (entry) => {
+
+          if (
+            entry.isIntersecting &&
+            !entry.target.dataset.started
+          ) {
+
+            entry.target.dataset.started =
+              "true";
+
+            animateCounter(
+              entry.target
+            );
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold: .7
+    }
+  );
+
+
+$$("[data-count]").forEach(
+  (element) => {
+
+    counterObserver.observe(
+      element
+    );
+
+  }
+);
+
+
+/* =========================================================
+   08 — 3D TILT
+   ========================================================= */
+
+$$(".tilt").forEach(
+  (card) => {
+
+    card.addEventListener(
+      "pointermove",
+      (event) => {
+
+        if (
+          window.innerWidth < 800
+        ) return;
+
+
+        const rect =
+          card.getBoundingClientRect();
+
+
+        const x =
+          (
+            event.clientX -
+            rect.left
+          ) /
+          rect.width -
+          .5;
+
+
+        const y =
+          (
+            event.clientY -
+            rect.top
+          ) /
+          rect.height -
+          .5;
+
+
+        const rotateX =
+          y * -8;
+
+        const rotateY =
+          x * 8;
+
+
+        card.style.transform =
+          `
+          perspective(800px)
+          rotateX(${rotateX}deg)
+          rotateY(${rotateY}deg)
+          translateZ(12px)
+          `;
+
+      }
+    );
+
+
+    card.addEventListener(
+      "pointerleave",
+      () => {
+
+        card.style.transform =
+          "";
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   09 — MAGNETIC BUTTONS
+   ========================================================= */
+
+$$(".magnetic").forEach(
+  (element) => {
+
+    element.addEventListener(
+      "pointermove",
+      (event) => {
+
+        if (
+          window.innerWidth < 800
+        ) return;
+
+
+        const rect =
+          element.getBoundingClientRect();
+
+
+        const x =
+          event.clientX -
+          rect.left -
+          rect.width / 2;
+
+
+        const y =
+          event.clientY -
+          rect.top -
+          rect.height / 2;
+
+
+        element.style.transform =
+          `
+          translate(
+            ${x * .15}px,
+            ${y * .15}px
+          )
+          `;
+
+      }
+    );
+
+
+    element.addEventListener(
+      "pointerleave",
+      () => {
+
+        element.style.transform =
+          "";
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   10 — CANVAS PARTICLES
+   ========================================================= */
+
+const canvas =
+  document.getElementById(
+    "spaceCanvas"
+  );
+
+
+const ctx =
+  canvas.getContext(
+    "2d"
+  );
+
+
+let canvasWidth =
+  window.innerWidth;
+
+
+let canvasHeight =
+  window.innerHeight;
+
+
+let devicePixelRatioValue =
+  Math.min(
+    window.devicePixelRatio || 1,
+    2
+  );
+
+
+let particles =
+  [];
+
+
+const particleMouse = {
+
+  x: -9999,
+
+  y: -9999
+
+};
+
+
+/* =========================================================
+   11 — CANVAS RESIZE
+   ========================================================= */
+
+function resizeCanvas() {
+
+  canvasWidth =
+    window.innerWidth;
+
+  canvasHeight =
+    window.innerHeight;
+
+
+  devicePixelRatioValue =
+    Math.min(
+      window.devicePixelRatio || 1,
+      2
+    );
+
+
+  canvas.width =
+    canvasWidth *
+    devicePixelRatioValue;
+
+
+  canvas.height =
+    canvasHeight *
+    devicePixelRatioValue;
+
+
+  canvas.style.width =
+    canvasWidth + "px";
+
+
+  canvas.style.height =
+    canvasHeight + "px";
+
+
+  ctx.setTransform(
+    devicePixelRatioValue,
+    0,
+    0,
+    devicePixelRatioValue,
+    0,
+    0
+  );
+
+}
+
+
+/* =========================================================
+   12 — PARTICLE CREATION
+   ========================================================= */
+
+function createParticles() {
+
+  const amount =
+    Math.min(
+      120,
+      Math.max(
+        45,
+        Math.floor(
+          canvasWidth / 10
+        )
+      )
+    );
+
+
+  particles =
+    [];
+
+
+  for (
+    let i = 0;
+    i < amount;
+    i++
+  ) {
+
+    particles.push({
+
+      x:
+        Math.random() *
+        canvasWidth,
+
+      y:
+        Math.random() *
+        canvasHeight,
+
+      vx:
+        (
+          Math.random() -
+          .5
+        ) * .35,
+
+      vy:
+        (
+          Math.random() -
+          .5
+        ) * .35,
+
+      radius:
+        Math.random() *
+        1.5 +
+        .4
+
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   13 — PARTICLE ENGINE
+   ========================================================= */
+
+function particleAnimation() {
+
+  ctx.clearRect(
+    0,
+    0,
+    canvasWidth,
+    canvasHeight
+  );
+
+
+  for (
+    let i = 0;
+    i < particles.length;
+    i++
+  ) {
+
+    const particle =
+      particles[i];
+
+
+    particle.x +=
+      particle.vx;
+
+    particle.y +=
+      particle.vy;
+
+
+    if (
+      particle.x < 0 ||
+      particle.x > canvasWidth
+    ) {
+
+      particle.vx *= -1;
+
+    }
+
+
+    if (
+      particle.y < 0 ||
+      particle.y > canvasHeight
+    ) {
+
+      particle.vy *= -1;
+
+    }
+
+
+    const dx =
+      particleMouse.x -
+      particle.x;
+
+
+    const dy =
+      particleMouse.y -
+      particle.y;
+
+
+    const distance =
+      Math.sqrt(
+        dx * dx +
+        dy * dy
+      );
+
+
+    if (
+      distance < 150 &&
+      distance > 1
+    ) {
+
+      particle.vx -=
+        (
+          dx /
+          distance
+        ) * .002;
+
+      particle.vy -=
+        (
+          dy /
+          distance
+        ) * .002;
+
+    }
+
+
+    ctx.globalAlpha =
+      .45;
+
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+      particle.x,
+      particle.y,
+      particle.radius,
+      0,
+      Math.PI * 2
+    );
+
+
+    ctx.fillStyle =
+      "#ffffff";
+
+
+    ctx.fill();
+
+
+    for (
+      let j = i + 1;
+      j < particles.length;
+      j++
+    ) {
+
+      const second =
+        particles[j];
+
+
+      const distanceBetween =
+        Math.sqrt(
+          Math.pow(
+            particle.x -
+            second.x,
+            2
+          ) +
+
+          Math.pow(
+            particle.y -
+            second.y,
+            2
+          )
+        );
+
+
+      if (
+        distanceBetween < 100
+      ) {
+
+        ctx.globalAlpha =
+          (
+            1 -
+            distanceBetween /
+            100
+          ) * .12;
+
+
+        ctx.beginPath();
+
+
+        ctx.moveTo(
+          particle.x,
+          particle.y
+        );
+
+
+        ctx.lineTo(
+          second.x,
+          second.y
+        );
+
+
+        ctx.strokeStyle =
+          "#ffffff";
+
+
+        ctx.stroke();
+
+      }
+
+    }
+
+  }
+
+
+  requestAnimationFrame(
+    particleAnimation
+  );
+
+}
+
+
+/* =========================================================
+   14 — MOUSE PARTICLE INTERACTION
+   ========================================================= */
+
+window.addEventListener(
+  "pointermove",
+  (event) => {
+
+    particleMouse.x =
+      event.clientX;
+
+    particleMouse.y =
+      event.clientY;
+
+  }
+);
+
+
+/* =========================================================
+   15 — PARTICLE INITIALIZATION
+   ========================================================= */
+
+resizeCanvas();
+
+createParticles();
+
+particleAnimation();
+
+
+/* =========================================================
+   16 — RESIZE LISTENER
+   ========================================================= */
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    resizeCanvas();
+
+    createParticles();
+
+  }
+);
+
+
+/* =========================================================
+   17 — HERO PARALLAX
+   ========================================================= */
+
+const hero =
+  document.querySelector(
+    ".hero"
+  );
+
+
+const heroGrid =
+  document.querySelector(
+    ".hero-grid"
+  );
+
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    if (!heroGrid) return;
+
+
+    const scroll =
+      window.scrollY;
+
+
+    heroGrid.style.transform =
+      `
+      perspective(500px)
+      rotateX(65deg)
+      translateY(
+        ${25 + scroll * .025}%
+      )
+      `;
+
+  },
+  {
+    passive: true
+  }
+);
+
+
+/* =========================================================
+   18 — HERO MOUSE PARALLAX
+   ========================================================= */
+
+const neuralCore =
+  document.querySelector(
+    ".neural-core"
+  );
+
+
+window.addEventListener(
+  "pointermove",
+  (event) => {
+
+    if (
+      window.innerWidth < 900
+    ) return;
+
+
+    const x =
+      (
+        event.clientX /
+        window.innerWidth -
+        .5
+      );
+
+
+    const y =
+      (
+        event.clientY /
+        window.innerHeight -
+        .5
+      );
+
+
+    if (
+      neuralCore
+    ) {
+
+      neuralCore.style.transform =
+        `
+        translate(
+          ${x * 25}px,
+          ${y * 25}px
+        )
+        `;
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   19 — RANDOM STAR GENERATOR
+   ========================================================= */
+
+const starField =
+  document.querySelector(
+    ".star-field"
+  );
+
+
+function generateExtraStars() {
+
+  if (!starField) return;
+
+
+  for (
+    let i = 0;
+    i < 20;
+    i++
+  ) {
+
+    const star =
+      document.createElement(
+        "i"
+      );
+
+
+    star.className =
+      "falling-star";
+
+
+    star.style.left =
+      Math.random() *
+      100 +
+      "%";
+
+
+    star.style.animationDuration =
+      (
+        3 +
+        Math.random() * 5
+      ) +
+      "s";
+
+
+    star.style.animationDelay =
+      (
+        Math.random() * 5
+      ) +
+      "s";
+
+
+    starField.appendChild(
+      star
+    );
+
+  }
+
+}
+
+
+generateExtraStars();
+
+
+/* =========================================================
+   20 — SMOOTH SECTION CLICK
+   ========================================================= */
+
+$$(
+  'a[href^="#"]'
+).forEach(
+  (link) => {
+
+    link.addEventListener(
+      "click",
+      (event) => {
+
+        const targetId =
+          link.getAttribute(
+            "href"
+          );
+
+
+        if (
+          !targetId ||
+          targetId === "#"
+        ) return;
+
+
+        const target =
+          document.querySelector(
+            targetId
+          );
+
+
+        if (!target) return;
+
+
+        event.preventDefault();
+
+
+        target.scrollIntoView(
+          {
+            behavior: "smooth",
+            block: "start"
+          }
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   21 — SECTION MOUSE GLOW
+   ========================================================= */
+
+$$(
+  ".service-card,.work-card,.article-card,.dashboard-card,.contact-card"
+).forEach(
+  (card) => {
+
+    card.addEventListener(
+      "pointermove",
+      (event) => {
+
+        const rect =
+          card.getBoundingClientRect();
+
+
+        const x =
+          event.clientX -
+          rect.left;
+
+
+        const y =
+          event.clientY -
+          rect.top;
+
+
+        card.style.background =
+          `
+          radial-gradient(
+            circle at
+            ${x}px ${y}px,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.02) 45%
+          )
+          `;
+
+      }
+    );
+
+
+    card.addEventListener(
+      "pointerleave",
+      () => {
+
+        card.style.background =
+          "";
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   22 — PAGE VISIBILITY
+   ========================================================= */
+
+document.addEventListener(
+  "visibilitychange",
+  () => {
+
+    if (
+      document.hidden
+    ) {
+
+      document.body.classList.add(
+        "page-hidden"
+      );
+
+    } else {
+
+      document.body.classList.remove(
+        "page-hidden"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   23 — FINAL INIT
+   ========================================================= */
+
+console.log(
+  "WAQAR PORTFOLIO — DIGITAL EXPERIENCE LOADED"
+);
+
+
+</script>
+
+
+
+<script>
+/* =========================================================
+   29 — EXTREME MOTION ENGINE
+   Additive layer: existing JavaScript remains untouched.
+   ========================================================= */
+(() => {
+  const root = document.documentElement;
+  const neuralCanvas = document.getElementById("neuralCanvas");
+  const nctx = neuralCanvas ? neuralCanvas.getContext("2d") : null;
+  const beam = document.querySelector(".pointer-beam");
+
+  let W = innerWidth, H = innerHeight, dpr = Math.min(devicePixelRatio || 1, 2);
+  let nx = W * .5, ny = H * .5;
+  let lastX = nx, lastY = ny;
+  let lastScroll = scrollY;
+  let scrollVelocity = 0;
+
+  const nodes = [];
+  const NODE_COUNT = Math.min(95, Math.max(42, Math.floor(innerWidth / 16)));
+
+  function resizeNeural(){
+    if(!neuralCanvas || !nctx) return;
+    W = innerWidth; H = innerHeight; dpr = Math.min(devicePixelRatio || 1, 2);
+    neuralCanvas.width = W * dpr;
+    neuralCanvas.height = H * dpr;
+    neuralCanvas.style.width = W + "px";
+    neuralCanvas.style.height = H + "px";
+    nctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  function seedNodes(){
+    nodes.length = 0;
+    for(let i=0;i<NODE_COUNT;i++){
+      const angle = Math.random() * Math.PI * 2;
+      const radius = Math.min(W,H) * (.12 + Math.random()*.44);
+      nodes.push({
+        x: W*.5 + Math.cos(angle)*radius,
+        y: H*.5 + Math.sin(angle)*radius,
+        vx: (Math.random()-.5)*.28,
+        vy: (Math.random()-.5)*.28,
+        r: .8 + Math.random()*2.2,
+        pulse: Math.random()*Math.PI*2
+      });
+    }
+  }
+
+  function neuralFrame(t){
+    if(!nctx) return;
+    nctx.clearRect(0,0,W,H);
+
+    const centerX = W*.5 + (nx-W*.5)*.10;
+    const centerY = H*.5 + (ny-H*.5)*.10;
+
+    for(let i=0;i<nodes.length;i++){
+      const a = nodes[i];
+      a.x += a.vx + Math.sin(t*.00035 + a.pulse)*.055;
+      a.y += a.vy + Math.cos(t*.00031 + a.pulse)*.055;
+
+      if(a.x < -30 || a.x > W+30) a.vx *= -1;
+      if(a.y < -30 || a.y > H+30) a.vy *= -1;
+
+      const mdx = nx-a.x, mdy = ny-a.y;
+      const md = Math.hypot(mdx,mdy);
+      if(md < 180 && md > 1){
+        a.vx += mdx/md * .0009;
+        a.vy += mdy/md * .0009;
+      }
+
+      nctx.beginPath();
+      nctx.arc(a.x,a.y,a.r + Math.sin(t*.004+a.pulse)*.35,0,Math.PI*2);
+      nctx.fillStyle = "rgba(255,255,255,.55)";
+      nctx.fill();
+    }
+
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        const dx=a.x-b.x, dy=a.y-b.y;
+        const dist=Math.hypot(dx,dy);
+        if(dist < 135){
+          const alpha=(1-dist/135)*.20;
+          nctx.beginPath();
+          nctx.moveTo(a.x,a.y);
+          nctx.lineTo(b.x,b.y);
+          nctx.strokeStyle=`rgba(139,92,246,${alpha})`;
+          nctx.lineWidth=.7;
+          nctx.stroke();
+        }
+      }
+    }
+
+    /* Pointer-to-neuron energy links */
+    for(const a of nodes){
+      const dist=Math.hypot(a.x-nx,a.y-ny);
+      if(dist<210){
+        nctx.beginPath();
+        nctx.moveTo(a.x,a.y);
+        nctx.lineTo(nx,ny);
+        nctx.strokeStyle=`rgba(34,211,238,${(1-dist/210)*.24})`;
+        nctx.stroke();
+      }
+    }
+
+    /* Central neural pulse */
+    const pulseR = 30 + Math.sin(t*.0025)*8;
+    const g=nctx.createRadialGradient(centerX,centerY,0,centerX,centerY,pulseR*5);
+    g.addColorStop(0,"rgba(255,255,255,.08)");
+    g.addColorStop(.45,"rgba(139,92,246,.035)");
+    g.addColorStop(1,"rgba(139,92,246,0)");
+    nctx.fillStyle=g;
+    nctx.beginPath();
+    nctx.arc(centerX,centerY,pulseR*5,0,Math.PI*2);
+    nctx.fill();
+
+    requestAnimationFrame(neuralFrame);
+  }
+
+  resizeNeural();
+  seedNodes();
+  requestAnimationFrame(neuralFrame);
+  addEventListener("resize",()=>{resizeNeural();seedNodes()},{passive:true});
+
+  /* Pointer command system */
+  addEventListener("pointermove",(e)=>{
+    if(e.pointerType === "touch") return;
+    nx=e.clientX; ny=e.clientY;
+    root.style.setProperty("--mx",nx+"px");
+    root.style.setProperty("--my",ny+"px");
+
+    if(beam){
+      const dx=nx-lastX, dy=ny-lastY;
+      const len=Math.min(150,Math.hypot(dx,dy)*3);
+      const angle=Math.atan2(dy,dx)*180/Math.PI;
+      beam.style.left=nx+"px";
+      beam.style.top=ny+"px";
+      beam.style.width=Math.max(25,len)+"px";
+      beam.style.transform=`rotate(${angle}deg)`;
+    }
+    lastX=nx; lastY=ny;
+
+    const card=e.target.closest(".service-card,.work-card,.article-card,.dashboard-card,.contact-card");
+    if(card){
+      const r=card.getBoundingClientRect();
+      card.style.setProperty("--spot-x",(e.clientX-r.left)+"px");
+      card.style.setProperty("--spot-y",(e.clientY-r.top)+"px");
+
+      if(innerWidth>=800){
+        const px=(e.clientX-r.left)/r.width-.5;
+        const py=(e.clientY-r.top)/r.height-.5;
+        card.style.transform=
+          `perspective(1100px) rotateX(${py*-7}deg) rotateY(${px*9}deg) translateZ(18px)`;
+      }
+    }
+  },{passive:true});
+
+  document.querySelectorAll(".service-card,.work-card,.article-card,.dashboard-card,.contact-card").forEach(card=>{
+    card.addEventListener("pointerleave",()=>{
+      card.style.transform="";
+    });
+  });
+
+  /* Touch-safe interaction: no click shockwave, ripple, or Web Animations API on touch. */
+  addEventListener("pointerdown",(e)=>{
+    if(e.pointerType === "touch") return;
+  },{passive:true});
+
+  /* Scroll energy */
+  let scrollTimer;
+  addEventListener("scroll",()=>{
+    const now=scrollY;
+    scrollVelocity=Math.abs(now-lastScroll);
+    lastScroll=now;
+    root.style.setProperty("--scroll-p",Math.min(scrollVelocity/80,1));
+    document.body.classList.add("scroll-fast");
+    clearTimeout(scrollTimer);
+    scrollTimer=setTimeout(()=>document.body.classList.remove("scroll-fast"),180);
+  },{passive:true});
+
+  /* Add extra depth to headings as the pointer moves */
+  const depthTargets=document.querySelectorAll(".hero-title,.section-title,.about-title");
+  addEventListener("pointermove",(e)=>{
+    if(e.pointerType === "touch") return;
+    const dx=(e.clientX/innerWidth-.5)*2;
+    const dy=(e.clientY/innerHeight-.5)*2;
+    depthTargets.forEach(el=>{
+      if(innerWidth<700) return;
+      el.style.transform=`perspective(900px) rotateX(${dy*-1.5}deg) rotateY(${dx*2}deg)`;
+    });
+  },{passive:true});
+
+  /* Holographic rings react to scroll */
+  const rings=document.querySelectorAll(".holo-ring");
+  addEventListener("scroll",()=>{
+    const s=scrollY;
+    rings.forEach((r,i)=>{
+      r.style.marginTop=(-14*innerWidth/100 + s*(i+1)*.012)+"px";
+    });
+  },{passive:true});
+})();
+</script>
+
+
+<!-- =======================================================
+     WAQAR AI INFORMATION DOCK
+     ======================================================= -->
+<a class="x-mini" href="https://x.com" target="_blank" rel="noopener" aria-label="Open X / Twitter">X</a>
+
+<aside class="ai-dock" id="waqarAI" aria-label="Waqar AI information assistant">
+  <div class="ai-head">
+    <div class="ai-brand"><span class="ai-status"></span> WAQAR AI</div>
+    <button class="ai-toggle" type="button" aria-expanded="false">ASK AI</button>
+  </div>
+  <div class="ai-body">
+    <div class="ai-copy">
+      <strong>Waqar is a website developer & digital creator.</strong><br>
+      He works on modern responsive websites, UI design, HTML, CSS, JavaScript, motion, website upgrades and digital experiences. This compact assistant summarizes the portfolio information already shown on this page.
+    </div>
+    <div class="ai-actions">
+      <a class="primary" href="https://wa.me/919235528409" target="_blank" rel="noopener">WHATSAPP ↗</a>
+      <a href="#services">SERVICES</a>
+      <a href="#work">DEMO WORK</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </div>
+</aside>
+
+
+<script>
+/* =========================================================
+   31 — TOUCH-SAFE SCROLL WORDS + WAQAR AI DOCK
+   ========================================================= */
+(() => {
+  const revealWords = document.querySelectorAll('.section-title, .about-title, .policy-title');
+  revealWords.forEach(el => {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => {
+      const frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(part => {
+        if(!part.trim()){ frag.appendChild(document.createTextNode(part)); return; }
+        const span=document.createElement('span');
+        span.className='scroll-word';
+        span.textContent=part;
+        frag.appendChild(span);
+      });
+      node.parentNode.replaceChild(frag,node);
+    });
+  });
+  const wordObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.querySelectorAll('.scroll-word').forEach((word,i)=>{
+          word.style.transitionDelay=Math.min(i*35,350)+'ms';
+          word.classList.add('is-visible');
+        });
+        wordObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.18});
+  revealWords.forEach(el=>wordObserver.observe(el));
+
+  const dock=document.getElementById('waqarAI');
+  const toggle=dock?.querySelector('.ai-toggle');
+  toggle?.addEventListener('click',()=>{
+    const open=dock.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.textContent=open?'CLOSE':'ASK AI';
+  });
+})();
+</script>
+
+</body>
+</html>
